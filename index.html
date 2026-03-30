@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naveeth Sarafath | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ==========================================================================
+           CSS Variables & Global Styles
+           ========================================================================== */
+        :root {
+            --primary: #00A6A6; /* Caribbean Blue */
+            --primary-dark: #008B8B;
+            --bg-color: #F8FAFC; /* Clean off-white background */
+            --surface: #FFFFFF;
+            --text-main: #0F172A; /* Crisp dark slate */
+            --text-light: #475569;
+            --font-main: 'Inter', sans-serif;
+            --transition-speed: 0.3s;
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6; /* Generous line spacing */
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* ==========================================================================
+           Layout & Typography
+           ========================================================================== */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 6rem 0;
+        }
+
+        h1, h2, h3 {
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--text-main);
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: 2.25rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary);
+            margin: 1rem auto 0;
+            border-radius: 2px;
+        }
+
+        p {
+            color: var(--text-light);
+            font-size: 1.125rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* ==========================================================================
+           Navigation
+           ========================================================================== */
+        nav {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-main);
+            transition: color var(--transition-speed) ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* ==========================================================================
+           Hero Section
+           ========================================================================== */
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px; /* Offset for fixed nav */
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 4rem;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-text h2 {
+            font-size: 1.5rem;
+            color: var(--text-light);
+            font-weight: 400;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .hero-text h2::after {
+            display: none; /* Remove centering line from hero h2 */
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.875rem 2rem;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all var(--transition-speed) ease;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: #ffffff;
+            border: 2px solid var(--primary);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            border-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(0, 166, 166, 0.05);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .profile-placeholder {
+            width: 400px;
+            height: 400px;
+            border-radius: 8px; /* Professional slight rounding */
+            background-color: #E2E8F0;
+            object-fit: cover;
+            box-shadow: var(--shadow-lg);
+            transition: transform var(--transition-speed) ease;
+        }
+
+        .profile-placeholder:hover {
+            transform: scale(1.02);
+        }
+
+        /* ==========================================================================
+           About Section
+           ========================================================================== */
+        #about {
+            background-color: var(--surface);
+        }
+
+        .about-text {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.25rem;
+            line-height: 1.8;
+        }
+
+        /* ==========================================================================
+           Skills Section
+           ========================================================================== */
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .skill-tag {
+            background-color: var(--surface);
+            color: var(--text-main);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 500;
+            font-size: 1rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid #E2E8F0;
+            transition: all var(--transition-speed) ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .skill-tag:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .skills-category {
+            width: 100%;
+            text-align: center;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        /* ==========================================================================
+           Projects Section
+           ========================================================================== */
+        #projects {
+            background-color: var(--surface);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--bg-color);
+            border-radius: 8px;
+            padding: 2rem;
+            border: 1px solid #E2E8F0;
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition-speed) ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+            border-color: rgba(0, 166, 166, 0.3);
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-role {
+            font-size: 0.9rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .project-desc {
+            flex-grow: 1;
+        }
+
+        .project-desc ul {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .project-desc li {
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: auto;
+        }
+
+        .tech-item {
+            font-size: 0.8rem;
+            background-color: #E2E8F0;
+            color: var(--text-light);
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        /* ==========================================================================
+           Footer / Contact Section
+           ========================================================================== */
+        footer {
+            background-color: #0F172A; /* Slate 900 */
+            color: #F8FAFC;
+            padding: 4rem 0 2rem;
+            text-align: center;
+        }
+
+        .footer-content h2 {
+            color: #F8FAFC;
+        }
+
+        .footer-content p {
+            color: #94A3B8;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-links a {
+            font-size: 1.125rem;
+            font-weight: 500;
+            transition: color var(--transition-speed) ease;
+        }
+
+        .contact-links a:hover {
+            color: var(--primary);
+        }
+
+        .copyright {
+            color: #64748B;
+            font-size: 0.875rem;
+            border-top: 1px solid #1E293B;
+            padding-top: 2rem;
+            margin-top: 2rem;
+        }
+
+        /* ==========================================================================
+           Animations (Scroll Reveal)
+           ========================================================================== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content {
+                flex-direction: column-reverse;
+                text-align: center;
+                gap: 2rem;
+            }
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            .hero-text h2 {
+                text-align: center;
+            }
+            .btn-group {
+                justify-content: center;
+            }
+            .profile-placeholder {
+                width: 300px;
+                height: 300px;
+            }
+            .nav-links {
+                display: none; /* In a full build, add a hamburger menu here */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="container nav-content">
+            <div class="logo">NS.</div>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <header id="hero" class="container reveal">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Naveeth Sarafath</h1>
+                <h2>Computer Engineering Student | Aspiring Data & AI Professional</h2>
+                <div class="btn-group">
+                    <a href="#projects" class="btn btn-primary">View My Work</a>
+                    <a href="#contact" class="btn btn-secondary">Contact Me</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="profile.jpg" alt="Naveeth Sarafath" class="profile-placeholder">
+            </div>
+        </div>
+    </header>
+
+    <section id="about" class="reveal">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-text">
+                <p>I am a Computer Science and Engineering student at Sethu Institute of Technology.</p>
+                <p>As an aspiring Data Analyst and Python Developer with hands-on experience in full-stack development, I am deeply focused on delivering efficient, data-driven solutions and exploring the architecture of real-world systems.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="reveal">
+        <div class="container">
+            <h2>Technical Arsenal</h2>
+            
+            <div class="skills-category">Core Focus Areas</div>
+            <div class="skills-grid">
+                <div class="skill-tag">Data Analytics</div>
+                <div class="skill-tag">AI Tools</div>
+                <div class="skill-tag">Quality Control</div>
+                <div class="skill-tag">HTML5 & CSS3</div>
+                <div class="skill-tag">Vanilla JavaScript</div>
+            </div>
+
+            <div class="skills-category">Frameworks & Technologies</div>
+            <div class="skills-grid">
+                <div class="skill-tag">Python</div>
+                <div class="skill-tag">Java</div>
+                <div class="skill-tag">Spring Boot</div>
+                <div class="skill-tag">REST APIs</div>
+                <div class="skill-tag">MySQL</div>
+                <div class="skill-tag">MongoDB</div>
+                <div class="skill-tag">Power BI</div>
+                <div class="skill-tag">Hibernate/JPA</div>
+            </div>
+
+            <div class="skills-category">Soft Skills & Languages</div>
+            <div class="skills-grid">
+                <div class="skill-tag">Problem-Solving</div>
+                <div class="skill-tag">Project Management</div>
+                <div class="skill-tag">English</div>
+                <div class="skill-tag">Tamil</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="reveal">
+        <div class="container">
+            <h2>Featured Projects</h2>
+            <div class="projects-grid">
+                
+                <div class="project-card">
+                    <h3 class="project-title">IaaS Storage Protection Scheme</h3>
+                    <div class="project-role">Lead Developer / Researcher</div>
+                    <div class="project-desc">
+                        <ul>
+                            <li>Designed and analyzed protection mechanisms for data stored in Infrastructure as a Service (IaaS) cloud environments.</li>
+                            <li>Addressed critical data integrity and privacy challenges inherent in distributed cloud architectures.</li>
+                            <li>Evaluated various encryption and access control models to establish a highly secure cloud storage framework.</li>
+                        </ul>
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-item">Cloud Architecture</span>
+                        <span class="tech-item">Security Protocols</span>
+                        <span class="tech-item">Data Privacy</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3 class="project-title">Student Management System</h3>
+                    <div class="project-role">Backend Developer</div>
+                    <div class="project-desc">
+                        <ul>
+                            <li>Engineered a robust backend system to manage student records efficiently utilizing full CRUD operations.</li>
+                            <li>Architected and implemented RESTful APIs to ensure seamless real-time data handling and client-server communication.</li>
+                            <li>Integrated Hibernate/JPA for streamlined database interactions and persistence management.</li>
+                        </ul>
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-item">Java</span>
+                        <span class="tech-item">Spring Boot</span>
+                        <span class="tech-item">MySQL</span>
+                        <span class="tech-item">REST API</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3 class="project-title">Interactive Web Applications</h3>
+                    <div class="project-role">Frontend Developer</div>
+                    <div class="project-desc">
+                        <ul>
+                            <li>Developed a suite of interactive front-end applications including a Connect Four Game, To-Do List App, and Calculator.</li>
+                            <li>Designed a functional E-Commerce website prototype demonstrating responsive design and dynamic state management.</li>
+                            <li>Focused on creating intuitive user interfaces and optimizing DOM manipulation performance.</li>
+                        </ul>
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-item">HTML5</span>
+                        <span class="tech-item">CSS3</span>
+                        <span class="tech-item">JavaScript</span>
+                        <span class="tech-item">UI/UX</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="reveal">
+        <div class="container footer-content">
+            <h2>Let's Connect</h2>
+            <p>I am currently open to new opportunities in Data Analytics, AI, and Software Engineering.</p>
+            <br>
+            <div class="contact-links">
+                <a href="mailto:naveeth140602@gmail.com">Email: naveeth140602@gmail.com</a>
+                <a href="https://linkedin.com/in/your-profile" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="https://github.com/your-username" target="_blank" rel="noopener noreferrer">GitHub</a>
+            </div>
+            
+            <div class="copyright">
+                &copy; <span id="year"></span> Naveeth Sarafath. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Set dynamic year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Intersection Observer for Scroll Reveal Animations
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealCallback = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    // Optional: Stop observing once revealed
+                    // observer.unobserve(entry.target); 
+                }
+            });
+        };
+
+        const revealOptions = {
+            threshold: 0.15, // Trigger when 15% of the element is visible
+            rootMargin: "0px 0px -50px 0px" // Slightly before it hits the bottom
+        };
+
+        const revealObserver = new IntersectionObserver(revealCallback, revealOptions);
+
+        revealElements.forEach(el => {
+            revealObserver.observe(el);
+        });
+
+        // Ensure elements already in viewport on load fade in immediately
+        window.addEventListener('load', () => {
+            revealElements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight) {
+                    el.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
